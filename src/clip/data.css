@@ -1,4 +1,15 @@
-/* emoji */
-{% for name, art in EMOJI %}
+
+/* [clip="NAME"] will be deprecated soon in next version */
+/* change to [clip="e:NAME"] */
+
+{% for name, art in GENERAL %}
 [clip~="{{ name }}"]::before { content: "{{ art }}"; }
+{% endfor %}
+
+{% for name, art in EMOJI %}
+[clip~="e:{{ name }}"]::before { content: "{{ art }}"; }
+{% endfor %}
+
+{% for name, art in UNICODE %}
+[clip~="u:{{ name }}"]::before { content: "{{ art }}"; }
 {% endfor %}

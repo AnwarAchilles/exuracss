@@ -1,9 +1,17 @@
 
+/* [clip="effect:NAME"] will be deprecated soon in next version */
+/* change to [clip="ef:NAME"] */
 
 [clip~="effect:icon"] { 
   filter: grayscale(100%) contrast(2) brightness(1.2);
 }
 [dark] [clip~="effect:icon"] { 
+  filter: grayscale(100%) contrast(2) brightness(1.2) invert(100%);
+}
+[clip~="ef:icon"] { 
+  filter: grayscale(100%) contrast(2) brightness(1.2);
+}
+[dark] [clip~="ef:icon"] { 
   filter: grayscale(100%) contrast(2) brightness(1.2) invert(100%);
 }
 
@@ -13,12 +21,25 @@
   background-color: var(--color-default-3); 
   border-radius: 100%;
 }
+[clip~="ef:isolate"] { 
+  padding: 0.3rem;
+  font-size: 0.7rem;
+  background-color: var(--color-default-3); 
+  border-radius: 100%;
+}
 
 [clip~="effect:emboss"] {
   filter: drop-shadow(1px 1px 0 var(--color-default-7)) drop-shadow(-1px -1px 0 var(--color-default-3));
 }
+[clip~="ef:emboss"] {
+  filter: drop-shadow(1px 1px 0 var(--color-default-7)) drop-shadow(-1px -1px 0 var(--color-default-3));
+}
 
 [clip~="effect:ghost"] {
+  filter: brightness(1.1) blur(0.3px);
+  opacity: 0.85;
+}
+[clip~="ef:ghost"] {
   filter: brightness(1.1) blur(0.3px);
   opacity: 0.85;
 }

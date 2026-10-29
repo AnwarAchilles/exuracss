@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 /**
  * Act. 1 - Understanding Its Flow  
@@ -95,64 +96,83 @@ function middleware($source, $env) {
   return $template->render($data);
 };
 
-Chanter::cast('build', function() {
-  Crafter::item('exura', function() {
-    Crafter::seed('DIST', __DIR__ . '/dist/exura.css');
-    Crafter::seed('TYPE', 'plain');
-    Crafter::seed('LANGUAGE', ['css']);
 
-    Crafter::shard('src/root.css');
-    Crafter::shard('src/reset.css');
-    Crafter::shard('src/base.css');
+/* B U I L D
+ * todo bundling to website applications 
+ * [i]INFO: crafting process will be reset your shard in .echoes
+ * */
+Chanter::cast(
+  arg: 'build',
+  echo: 'build dist/exura.css (--min=true: + .min)',
+  execute: function() {
+    Crafter::item('exura', function() {
+      Crafter::seed('DIST', __DIR__ . '/dist/exura.css');
+      Crafter::seed('TYPE', 'plain');
+      Crafter::seed('LANGUAGE', ['css']);
 
-    Forger::scan('src/module/', function($item) {
-      Crafter::shard($item->target);
+      Crafter::shard('src/root.css');
+      Crafter::shard('src/reset.css');
+      Crafter::shard('src/base.css');
+
+      Forger::scan('src/module/', function($item) {
+        Crafter::shard($item->target);
+      });
     });
-  });
-  
-  Crafter::spark('exura', function () {
-    global $CRAFTER_SPARK_DISTRIBUTE;
+    
+    Crafter::spark('exura', function () {
+      global $CRAFTER_SPARK_DISTRIBUTE;
 
-    $source = $CRAFTER_SPARK_DISTRIBUTE;
-    $source = middleware($source, 'exura.json');
-    $source = str_replace("\n\n", "\n", $source);
+      $source = $CRAFTER_SPARK_DISTRIBUTE;
+      $source = middleware($source, 'exura.json');
+      $source = str_replace("\n\n", "\n", $source);
 
-    if (Chanter::spell('min') == 'true') {
-      $min = new cssdoc();
-      $min->load($source);
-      $min->minify();
-      $minified = $min->compile();
-      Forger::item('dist/exura.min.css', $minified);
-    }
+      if (Chanter::spell('min') == 'true') {
+        $min = new cssdoc();
+        $min->load($source);
+        $min->minify();
+        $minified = $min->compile();
+        Forger::item('dist/exura.min.css', $minified);
+      }
 
-    $CRAFTER_SPARK_DISTRIBUTE = $source;
-  });
-}, 'Build dist (--min=true: + .min)');
+      $CRAFTER_SPARK_DISTRIBUTE = $source;
+    });
+  }
+);
 
-Chanter::cast('build-clip', function() {
-  Crafter::item('exura-clip', function() {
-    Crafter::seed('DIST', __DIR__ . '/dist/exura-clip.css');
-    Crafter::seed('TYPE', 'plain');
-    Crafter::seed('LANGUAGE', ['css']);  
+/* B U I L D
+ * todo bundling to website applications 
+ * [i]INFO: crafting process will be reset your shard in .echoes
+ * */
+Chanter::cast(
+  arg: 'build-clip',
+  echo: 'build dist/exura-clip.css (emoji)',
+  execute: function() {
+    Crafter::item('exura-clip', function() {
+      Crafter::seed('DIST', __DIR__ . '/dist/exura-clip.css');
+      Crafter::seed('TYPE', 'plain');
+      Crafter::seed('LANGUAGE', ['css']);  
 
-    Crafter::shard('src/clip/base.css');
-    Crafter::shard('src/clip/data.css');
-    Crafter::shard('src/clip/effect.css');
-    Crafter::shard('src/clip/animate.css');
-  });
-  
-  Crafter::spark('exura-clip', function () {
-    global $CRAFTER_SPARK_DISTRIBUTE;
+      Crafter::shard('src/clip/base.css');
+      Crafter::shard('src/clip/data.css');
+      Crafter::shard('src/clip/effect.css');
+      Crafter::shard('src/clip/animate.css');
+    });
+    
+    Crafter::spark('exura-clip', function () {
+      global $CRAFTER_SPARK_DISTRIBUTE;
 
-    $rebase = $CRAFTER_SPARK_DISTRIBUTE;
-    $rebase = middleware($rebase, 'exura-clip.json');
-    $rebase = str_replace("\n\n", "\n", $rebase);
+      $rebase = $CRAFTER_SPARK_DISTRIBUTE;
+      $rebase = middleware($rebase, 'exura-clip.json');
+      $rebase = str_replace("\n\n", "\n", $rebase);
 
-    $CRAFTER_SPARK_DISTRIBUTE = $rebase;
-  });
-}, 'Build dist/exura-clip.css (emoji)');
+      $CRAFTER_SPARK_DISTRIBUTE = $rebase;
+    });
+  }
+);
 
-
+/* W A T C H
+ * todo observe change in repo then trigger build
+ *  */
 Chanter::cast(
   arg: 'watch',
   echo: 'observe change in repo then trigger build',
@@ -163,7 +183,6 @@ Chanter::cast(
   }
 );
 
-
 /**
  * V E R S I O N
  * The version lives in `const VERSION` (this runite edits itself);
@@ -173,40 +192,83 @@ Chanter::cast(
  *   php cast version --pre[=dev]
  *   php cast version --set=1.0.0-dev
  */
-Chanter::cast('version --up --pre --set', function() {
-  $next = VERSION;
-  if (($set = Chanter::spell('set')) && $set !== '1') {
-    $next = $set;
-  }
-  if ($up = Chanter::spell('up')) {
-    preg_match('/^(\d+)\.(\d+)\.(\d+)/', $next, $v);
-    $next = match ($up === '1' ? 'patch' : $up) {
-      'major'   => ($v[1] + 1) . '.0.0',
-      'minor'   => $v[1] . '.' . ($v[2] + 1) . '.0',
-      'patch'   => $v[1] . '.' . $v[2] . '.' . ($v[3] + 1),
-      'release' => $v[0],
-      default   => false,
-    };
-  }
-  if ($next && ($pre = Chanter::spell('pre'))) {
-    $next = preg_replace('/-.*$/', '', $next) . '-' . ($pre === '1' ? 'dev' : $pre);
-  }
+Chanter::cast(
+  arg: 'version',
+  echo: 'show or bump the runite VERSION',
+  execute: function() {
+    $next = VERSION;
+    if (($set = Chanter::spell('set')) && $set !== '1') {
+      $next = $set;
+    }
+    if ($up = Chanter::spell('up')) {
+      preg_match('/^(\d+)\.(\d+)\.(\d+)/', $next, $v);
+      $next = match ($up === '1' ? 'patch' : $up) {
+        'major'   => ($v[1] + 1) . '.0.0',
+        'minor'   => $v[1] . '.' . ($v[2] + 1) . '.0',
+        'patch'   => $v[1] . '.' . $v[2] . '.' . ($v[3] + 1),
+        'release' => $v[0],
+        default   => false,
+      };
+    }
+    if ($next && ($pre = Chanter::spell('pre'))) {
+      $next = preg_replace('/-.*$/', '', $next) . '-' . ($pre === '1' ? 'dev' : $pre);
+    }
 
-  if ($next === VERSION) {
-    Whisper::echo("{{color-info}}EXURA CSS{{color-end}} " . VERSION . "{{nl}}");
-    return;
-  }
-  if (!$next || !preg_match('/^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$/', $next)) {
-    Whisper::echo("{{color-danger}}{{icon-warning}} Invalid version. Use --up=patch|minor|major|release, --pre[=dev] or --set=x.y.z{{nl}}");
-    return;
-  }
+    if ($next === VERSION) {
+      Whisper::echo("{{color-info}}EXURA CSS{{color-end}} " . VERSION . "{{nl}}");
+      return;
+    }
+    if (!$next || !preg_match('/^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$/', $next)) {
+      Whisper::echo("{{color-danger}}{{icon-warning}} Invalid version. Use --up=patch|minor|major|release, --pre[=dev] or --set=x.y.z{{nl}}");
+      return;
+    }
 
-  $runite = file_get_contents(__FILE__);
-  $runite = preg_replace("/(const VERSION = ')[^']*(')/", '${1}' . $next . '${2}', $runite, 1);
-  file_put_contents(__FILE__, $runite);
-  Whisper::echo("{{color-success}}{{icon-success}} EXURA CSS " . VERSION . " -> $next{{nl}}");
-  Whisper::echo("{{color-secondary}}Rebuild: php cast build --min=true{{nl}}");
-}, 'Show or bump the runite VERSION');
+    $runite = file_get_contents(__FILE__);
+    $runite = preg_replace("/(const VERSION = ')[^']*(')/", '${1}' . $next . '${2}', $runite, 1);
+    file_put_contents(__FILE__, $runite);
+    Whisper::echo("{{color-success}}{{icon-success}} EXURA CSS " . VERSION . " -> $next{{nl}}");
+    Whisper::echo("{{color-secondary}}Rebuild: php cast build --min=true{{nl}}");
+  }
+);
+
+
+/* C L I P - C H E C K
+ * check duplicate clip names
+ *  */
+Chanter::cast(
+  arg: 'clip-check',
+  echo: 'check duplicate clip names',
+  execute: function() {
+    $clip = json_decode(Forger::item('exura-clip.json'), true);
+
+    $unicode = $clip['UNICODE'] ?? [];
+    $emoji = $clip['EMOJI'] ?? [];
+
+    $unicodeNames = array_keys($unicode);
+    $emojiNames = array_keys($emoji);
+
+    // Check duplicate names
+    $duplicates = array_intersect($unicodeNames, $emojiNames);
+
+    if (!empty($duplicates)) {
+      Whisper::echo(
+        "{{color-warning}}Duplicate names found: " .
+        implode(', ', $duplicates) .
+        "{{nl}}"
+      );
+    } else {
+      Whisper::echo(
+        "{{color-success}}No duplicate names found between EMOJI and UNICODE.{{nl}}"
+      );
+    }
+
+    // Check names exclusive to each category
+    $uniqueUnicode = array_diff($unicodeNames, $emojiNames);
+    $uniqueEmoji = array_diff($emojiNames, $unicodeNames);
+  }
+);
+
+
 
 #sentinel-codex
 Keeper::end();
