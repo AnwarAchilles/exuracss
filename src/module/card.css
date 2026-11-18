@@ -7,7 +7,8 @@
 [card~="sm"] { padding: var(--size-pm-0-5) var(--size-pm-1); }
 [card~="lg"] { padding: var(--size-pm-2) var(--size-pm-3); }
 
-{# light/dark/white/black follow dark-mode reversal; other colors keep a fixed text color #}
+{# solid: light/dark/white/black follow dark-mode reversal; other colors keep a fixed text color.
+   tints (NAME:N): the ink chosen at build time for light and dark pages (--ink-NAME-N in root.css) #}
 {% for root, invert in CARD %}
 {% if root in ['light', 'dark', 'white', 'black'] %}{% set ink = 'var(--color-' ~ invert ~ ')' %}{% else %}{% set ink = 'var(--color-fixed-' ~ invert ~ ')' %}{% endif %}
 [card~="{{ root }}"] {
@@ -16,7 +17,7 @@
 }
 {% for i in 1..10 %}
 [card~="{{ root }}:{{ i }}"] {
-  color: {{ ink }};
+  color: var(--ink-{{ root }}-{{ i }});
   background-color: var(--color-{{ root }}-{{ i }});
 }
 {% endfor %}
