@@ -81,6 +81,32 @@ function hexToRgba($hex, $alpha = 1.0) {
   return "rgba($r, $g, $b, $alpha)";
 }
 
+// color balancing: the ink ('dark' or 'light') that reads best on a tint
+// $hex at $alpha laid over the page $page — WCAG contrast of the blended color
+function ink($hex, $alpha, $page, $dark, $light) {
+  $rgb = function($hex) {
+    $hex = ltrim($hex, '#');
+    if (strlen($hex) === 3) $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+    return [hexdec(substr($hex, 0, 2)), hexdec(substr($hex, 2, 2)), hexdec(substr($hex, 4, 2))];
+  };
+  $luminance = function($rgb) {
+    $l = array_map(function($v) {
+      $v /= 255;
+      return $v <= 0.03928 ? $v / 12.92 : (($v + 0.055) / 1.055) ** 2.4;
+    }, $rgb);
+    return 0.2126 * $l[0] + 0.7152 * $l[1] + 0.0722 * $l[2];
+  };
+  $contrast = function($a, $b) {
+    [$hi, $lo] = $a > $b ? [$a, $b] : [$b, $a];
+    return ($hi + 0.05) / ($lo + 0.05);
+  };
+
+  [$c, $p] = [$rgb($hex), $rgb($page)];
+  $surface = $luminance(array_map(fn($i) => $c[$i] * $alpha + $p[$i] * (1 - $alpha), [0, 1, 2]));
+
+  return $contrast($surface, $luminance($rgb($dark))) >= $contrast($surface, $luminance($rgb($light))) ? 'dark' : 'light';
+}
+
 use Twig\Environment;
 use Twig\Loader\ArrayLoader;
 use Twig\TwigFunction;
@@ -90,6 +116,7 @@ use hexydec\css\cssdoc;
 function middleware($source, $env) { 
   $twig = new Environment(new ArrayLoader());
   $twig->addFunction(new TwigFunction('hexToRgba', 'hexToRgba'));
+  $twig->addFunction(new TwigFunction('ink', 'ink'));
   $template = $twig->createTemplate($source);
   $data = json_decode(Forger::item($env), true);
   $data['VERSION'] = VERSION;

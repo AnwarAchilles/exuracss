@@ -35,6 +35,13 @@
   --color-fixed-dark: {{ COLOR.dark }};
   --color-fixed-white: {{ COLOR.white }};
   --color-fixed-black: {{ COLOR.black }};
+
+  /* ink of each tint (card="NAME:N"): the text that reads best on it, over a light page */
+{% for root in CARD|keys %}
+{% for i in 1..10 %}
+  --ink-{{ root }}-{{ i }}: var(--color-fixed-{{ ink(COLOR[root], i / 10, COLOR.white, COLOR.dark, COLOR.light) }});
+{% endfor %}
+{% endfor %}
 }
 
 /* dark mode = reversal: light <-> dark, white <-> black (with shades).
@@ -46,6 +53,14 @@
   --color-{{ pair[0] }}-{{ i }}: {{ hexToRgba(COLOR[pair[1]], i / 10) }};
 {% endfor %}
 {% endfor %}
+
+  /* ink of each tint over a dark page (light/dark/white/black are reversed here) */
+{% set swap = {'light': 'dark', 'dark': 'light', 'white': 'black', 'black': 'white'} %}
+{% for root in CARD|keys %}
+{% for i in 1..10 %}
+  --ink-{{ root }}-{{ i }}: var(--color-fixed-{{ ink(COLOR[swap[root] ?? root], i / 10, COLOR.black, COLOR.dark, COLOR.light) }});
+{% endfor %}
+{% endfor %}
 }
 
 [light] {
@@ -53,6 +68,13 @@
   --color-{{ name }}: {{ COLOR[name] }};
 {% for i in 1..10 %}
   --color-{{ name }}-{{ i }}: {{ hexToRgba(COLOR[name], i / 10) }};
+{% endfor %}
+{% endfor %}
+
+  /* ink of each tint (card="NAME:N"): the text that reads best on it, over a light page ([light] brings it back) */
+{% for root in CARD|keys %}
+{% for i in 1..10 %}
+  --ink-{{ root }}-{{ i }}: var(--color-fixed-{{ ink(COLOR[root], i / 10, COLOR.white, COLOR.dark, COLOR.light) }});
 {% endfor %}
 {% endfor %}
 }

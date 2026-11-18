@@ -159,6 +159,77 @@
   --color-fixed-dark: #171719;
   --color-fixed-white: #FBFBFE;
   --color-fixed-black: #090909;
+  /* ink of each tint (card="NAME:N"): the text that reads best on it, over a light page */
+  --ink-default-1: var(--color-fixed-dark);
+  --ink-default-2: var(--color-fixed-dark);
+  --ink-default-3: var(--color-fixed-dark);
+  --ink-default-4: var(--color-fixed-dark);
+  --ink-default-5: var(--color-fixed-dark);
+  --ink-default-6: var(--color-fixed-dark);
+  --ink-default-7: var(--color-fixed-dark);
+  --ink-default-8: var(--color-fixed-dark);
+  --ink-default-9: var(--color-fixed-dark);
+  --ink-default-10: var(--color-fixed-dark);
+  --ink-primary-1: var(--color-fixed-dark);
+  --ink-primary-2: var(--color-fixed-dark);
+  --ink-primary-3: var(--color-fixed-dark);
+  --ink-primary-4: var(--color-fixed-dark);
+  --ink-primary-5: var(--color-fixed-dark);
+  --ink-primary-6: var(--color-fixed-dark);
+  --ink-primary-7: var(--color-fixed-dark);
+  --ink-primary-8: var(--color-fixed-dark);
+  --ink-primary-9: var(--color-fixed-light);
+  --ink-primary-10: var(--color-fixed-light);
+  --ink-secondary-1: var(--color-fixed-dark);
+  --ink-secondary-2: var(--color-fixed-dark);
+  --ink-secondary-3: var(--color-fixed-dark);
+  --ink-secondary-4: var(--color-fixed-dark);
+  --ink-secondary-5: var(--color-fixed-dark);
+  --ink-secondary-6: var(--color-fixed-dark);
+  --ink-secondary-7: var(--color-fixed-light);
+  --ink-secondary-8: var(--color-fixed-light);
+  --ink-secondary-9: var(--color-fixed-light);
+  --ink-secondary-10: var(--color-fixed-light);
+  --ink-dark-1: var(--color-fixed-dark);
+  --ink-dark-2: var(--color-fixed-dark);
+  --ink-dark-3: var(--color-fixed-dark);
+  --ink-dark-4: var(--color-fixed-dark);
+  --ink-dark-5: var(--color-fixed-dark);
+  --ink-dark-6: var(--color-fixed-light);
+  --ink-dark-7: var(--color-fixed-light);
+  --ink-dark-8: var(--color-fixed-light);
+  --ink-dark-9: var(--color-fixed-light);
+  --ink-dark-10: var(--color-fixed-light);
+  --ink-light-1: var(--color-fixed-dark);
+  --ink-light-2: var(--color-fixed-dark);
+  --ink-light-3: var(--color-fixed-dark);
+  --ink-light-4: var(--color-fixed-dark);
+  --ink-light-5: var(--color-fixed-dark);
+  --ink-light-6: var(--color-fixed-dark);
+  --ink-light-7: var(--color-fixed-dark);
+  --ink-light-8: var(--color-fixed-dark);
+  --ink-light-9: var(--color-fixed-dark);
+  --ink-light-10: var(--color-fixed-dark);
+  --ink-black-1: var(--color-fixed-dark);
+  --ink-black-2: var(--color-fixed-dark);
+  --ink-black-3: var(--color-fixed-dark);
+  --ink-black-4: var(--color-fixed-dark);
+  --ink-black-5: var(--color-fixed-dark);
+  --ink-black-6: var(--color-fixed-light);
+  --ink-black-7: var(--color-fixed-light);
+  --ink-black-8: var(--color-fixed-light);
+  --ink-black-9: var(--color-fixed-light);
+  --ink-black-10: var(--color-fixed-light);
+  --ink-white-1: var(--color-fixed-dark);
+  --ink-white-2: var(--color-fixed-dark);
+  --ink-white-3: var(--color-fixed-dark);
+  --ink-white-4: var(--color-fixed-dark);
+  --ink-white-5: var(--color-fixed-dark);
+  --ink-white-6: var(--color-fixed-dark);
+  --ink-white-7: var(--color-fixed-dark);
+  --ink-white-8: var(--color-fixed-dark);
+  --ink-white-9: var(--color-fixed-dark);
+  --ink-white-10: var(--color-fixed-dark);
 }
 /* dark mode = reversal: light <-> dark, white <-> black (with shades).
  * Works on <body dark> or any element; [light] brings the normal pairs back inside it. */
@@ -207,6 +278,77 @@
   --color-black-8: rgba(251, 251, 254, 0.8);
   --color-black-9: rgba(251, 251, 254, 0.9);
   --color-black-10: rgba(251, 251, 254, 1);
+  /* ink of each tint over a dark page (light/dark/white/black are reversed here) */
+  --ink-default-1: var(--color-fixed-light);
+  --ink-default-2: var(--color-fixed-light);
+  --ink-default-3: var(--color-fixed-light);
+  --ink-default-4: var(--color-fixed-light);
+  --ink-default-5: var(--color-fixed-light);
+  --ink-default-6: var(--color-fixed-light);
+  --ink-default-7: var(--color-fixed-light);
+  --ink-default-8: var(--color-fixed-light);
+  --ink-default-9: var(--color-fixed-dark);
+  --ink-default-10: var(--color-fixed-dark);
+  --ink-primary-1: var(--color-fixed-light);
+  --ink-primary-2: var(--color-fixed-light);
+  --ink-primary-3: var(--color-fixed-light);
+  --ink-primary-4: var(--color-fixed-light);
+  --ink-primary-5: var(--color-fixed-light);
+  --ink-primary-6: var(--color-fixed-light);
+  --ink-primary-7: var(--color-fixed-light);
+  --ink-primary-8: var(--color-fixed-light);
+  --ink-primary-9: var(--color-fixed-light);
+  --ink-primary-10: var(--color-fixed-light);
+  --ink-secondary-1: var(--color-fixed-light);
+  --ink-secondary-2: var(--color-fixed-light);
+  --ink-secondary-3: var(--color-fixed-light);
+  --ink-secondary-4: var(--color-fixed-light);
+  --ink-secondary-5: var(--color-fixed-light);
+  --ink-secondary-6: var(--color-fixed-light);
+  --ink-secondary-7: var(--color-fixed-light);
+  --ink-secondary-8: var(--color-fixed-light);
+  --ink-secondary-9: var(--color-fixed-light);
+  --ink-secondary-10: var(--color-fixed-light);
+  --ink-dark-1: var(--color-fixed-light);
+  --ink-dark-2: var(--color-fixed-light);
+  --ink-dark-3: var(--color-fixed-light);
+  --ink-dark-4: var(--color-fixed-light);
+  --ink-dark-5: var(--color-fixed-dark);
+  --ink-dark-6: var(--color-fixed-dark);
+  --ink-dark-7: var(--color-fixed-dark);
+  --ink-dark-8: var(--color-fixed-dark);
+  --ink-dark-9: var(--color-fixed-dark);
+  --ink-dark-10: var(--color-fixed-dark);
+  --ink-light-1: var(--color-fixed-light);
+  --ink-light-2: var(--color-fixed-light);
+  --ink-light-3: var(--color-fixed-light);
+  --ink-light-4: var(--color-fixed-light);
+  --ink-light-5: var(--color-fixed-light);
+  --ink-light-6: var(--color-fixed-light);
+  --ink-light-7: var(--color-fixed-light);
+  --ink-light-8: var(--color-fixed-light);
+  --ink-light-9: var(--color-fixed-light);
+  --ink-light-10: var(--color-fixed-light);
+  --ink-black-1: var(--color-fixed-light);
+  --ink-black-2: var(--color-fixed-light);
+  --ink-black-3: var(--color-fixed-light);
+  --ink-black-4: var(--color-fixed-light);
+  --ink-black-5: var(--color-fixed-dark);
+  --ink-black-6: var(--color-fixed-dark);
+  --ink-black-7: var(--color-fixed-dark);
+  --ink-black-8: var(--color-fixed-dark);
+  --ink-black-9: var(--color-fixed-dark);
+  --ink-black-10: var(--color-fixed-dark);
+  --ink-white-1: var(--color-fixed-light);
+  --ink-white-2: var(--color-fixed-light);
+  --ink-white-3: var(--color-fixed-light);
+  --ink-white-4: var(--color-fixed-light);
+  --ink-white-5: var(--color-fixed-light);
+  --ink-white-6: var(--color-fixed-light);
+  --ink-white-7: var(--color-fixed-light);
+  --ink-white-8: var(--color-fixed-light);
+  --ink-white-9: var(--color-fixed-light);
+  --ink-white-10: var(--color-fixed-light);
 }
 [light] {
   --color-light: #f5f5f5;
@@ -253,6 +395,77 @@
   --color-black-8: rgba(9, 9, 9, 0.8);
   --color-black-9: rgba(9, 9, 9, 0.9);
   --color-black-10: rgba(9, 9, 9, 1);
+  /* ink of each tint (card="NAME:N"): the text that reads best on it, over a light page ([light] brings it back) */
+  --ink-default-1: var(--color-fixed-dark);
+  --ink-default-2: var(--color-fixed-dark);
+  --ink-default-3: var(--color-fixed-dark);
+  --ink-default-4: var(--color-fixed-dark);
+  --ink-default-5: var(--color-fixed-dark);
+  --ink-default-6: var(--color-fixed-dark);
+  --ink-default-7: var(--color-fixed-dark);
+  --ink-default-8: var(--color-fixed-dark);
+  --ink-default-9: var(--color-fixed-dark);
+  --ink-default-10: var(--color-fixed-dark);
+  --ink-primary-1: var(--color-fixed-dark);
+  --ink-primary-2: var(--color-fixed-dark);
+  --ink-primary-3: var(--color-fixed-dark);
+  --ink-primary-4: var(--color-fixed-dark);
+  --ink-primary-5: var(--color-fixed-dark);
+  --ink-primary-6: var(--color-fixed-dark);
+  --ink-primary-7: var(--color-fixed-dark);
+  --ink-primary-8: var(--color-fixed-dark);
+  --ink-primary-9: var(--color-fixed-light);
+  --ink-primary-10: var(--color-fixed-light);
+  --ink-secondary-1: var(--color-fixed-dark);
+  --ink-secondary-2: var(--color-fixed-dark);
+  --ink-secondary-3: var(--color-fixed-dark);
+  --ink-secondary-4: var(--color-fixed-dark);
+  --ink-secondary-5: var(--color-fixed-dark);
+  --ink-secondary-6: var(--color-fixed-dark);
+  --ink-secondary-7: var(--color-fixed-light);
+  --ink-secondary-8: var(--color-fixed-light);
+  --ink-secondary-9: var(--color-fixed-light);
+  --ink-secondary-10: var(--color-fixed-light);
+  --ink-dark-1: var(--color-fixed-dark);
+  --ink-dark-2: var(--color-fixed-dark);
+  --ink-dark-3: var(--color-fixed-dark);
+  --ink-dark-4: var(--color-fixed-dark);
+  --ink-dark-5: var(--color-fixed-dark);
+  --ink-dark-6: var(--color-fixed-light);
+  --ink-dark-7: var(--color-fixed-light);
+  --ink-dark-8: var(--color-fixed-light);
+  --ink-dark-9: var(--color-fixed-light);
+  --ink-dark-10: var(--color-fixed-light);
+  --ink-light-1: var(--color-fixed-dark);
+  --ink-light-2: var(--color-fixed-dark);
+  --ink-light-3: var(--color-fixed-dark);
+  --ink-light-4: var(--color-fixed-dark);
+  --ink-light-5: var(--color-fixed-dark);
+  --ink-light-6: var(--color-fixed-dark);
+  --ink-light-7: var(--color-fixed-dark);
+  --ink-light-8: var(--color-fixed-dark);
+  --ink-light-9: var(--color-fixed-dark);
+  --ink-light-10: var(--color-fixed-dark);
+  --ink-black-1: var(--color-fixed-dark);
+  --ink-black-2: var(--color-fixed-dark);
+  --ink-black-3: var(--color-fixed-dark);
+  --ink-black-4: var(--color-fixed-dark);
+  --ink-black-5: var(--color-fixed-dark);
+  --ink-black-6: var(--color-fixed-light);
+  --ink-black-7: var(--color-fixed-light);
+  --ink-black-8: var(--color-fixed-light);
+  --ink-black-9: var(--color-fixed-light);
+  --ink-black-10: var(--color-fixed-light);
+  --ink-white-1: var(--color-fixed-dark);
+  --ink-white-2: var(--color-fixed-dark);
+  --ink-white-3: var(--color-fixed-dark);
+  --ink-white-4: var(--color-fixed-dark);
+  --ink-white-5: var(--color-fixed-dark);
+  --ink-white-6: var(--color-fixed-dark);
+  --ink-white-7: var(--color-fixed-dark);
+  --ink-white-8: var(--color-fixed-dark);
+  --ink-white-9: var(--color-fixed-dark);
+  --ink-white-10: var(--color-fixed-dark);
 }
 /* Document
    ========================================================================== */
@@ -891,43 +1104,43 @@ a[button=""] {
   background-color: var(--color-default);
 }
 [card~="default:1"] {
-  color: var(--color-fixed-dark);
+  color: var(--ink-default-1);
   background-color: var(--color-default-1);
 }
 [card~="default:2"] {
-  color: var(--color-fixed-dark);
+  color: var(--ink-default-2);
   background-color: var(--color-default-2);
 }
 [card~="default:3"] {
-  color: var(--color-fixed-dark);
+  color: var(--ink-default-3);
   background-color: var(--color-default-3);
 }
 [card~="default:4"] {
-  color: var(--color-fixed-dark);
+  color: var(--ink-default-4);
   background-color: var(--color-default-4);
 }
 [card~="default:5"] {
-  color: var(--color-fixed-dark);
+  color: var(--ink-default-5);
   background-color: var(--color-default-5);
 }
 [card~="default:6"] {
-  color: var(--color-fixed-dark);
+  color: var(--ink-default-6);
   background-color: var(--color-default-6);
 }
 [card~="default:7"] {
-  color: var(--color-fixed-dark);
+  color: var(--ink-default-7);
   background-color: var(--color-default-7);
 }
 [card~="default:8"] {
-  color: var(--color-fixed-dark);
+  color: var(--ink-default-8);
   background-color: var(--color-default-8);
 }
 [card~="default:9"] {
-  color: var(--color-fixed-dark);
+  color: var(--ink-default-9);
   background-color: var(--color-default-9);
 }
 [card~="default:10"] {
-  color: var(--color-fixed-dark);
+  color: var(--ink-default-10);
   background-color: var(--color-default-10);
 }
 [card~="primary"] {
@@ -935,43 +1148,43 @@ a[button=""] {
   background-color: var(--color-primary);
 }
 [card~="primary:1"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-primary-1);
   background-color: var(--color-primary-1);
 }
 [card~="primary:2"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-primary-2);
   background-color: var(--color-primary-2);
 }
 [card~="primary:3"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-primary-3);
   background-color: var(--color-primary-3);
 }
 [card~="primary:4"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-primary-4);
   background-color: var(--color-primary-4);
 }
 [card~="primary:5"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-primary-5);
   background-color: var(--color-primary-5);
 }
 [card~="primary:6"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-primary-6);
   background-color: var(--color-primary-6);
 }
 [card~="primary:7"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-primary-7);
   background-color: var(--color-primary-7);
 }
 [card~="primary:8"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-primary-8);
   background-color: var(--color-primary-8);
 }
 [card~="primary:9"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-primary-9);
   background-color: var(--color-primary-9);
 }
 [card~="primary:10"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-primary-10);
   background-color: var(--color-primary-10);
 }
 [card~="secondary"] {
@@ -979,43 +1192,43 @@ a[button=""] {
   background-color: var(--color-secondary);
 }
 [card~="secondary:1"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-secondary-1);
   background-color: var(--color-secondary-1);
 }
 [card~="secondary:2"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-secondary-2);
   background-color: var(--color-secondary-2);
 }
 [card~="secondary:3"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-secondary-3);
   background-color: var(--color-secondary-3);
 }
 [card~="secondary:4"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-secondary-4);
   background-color: var(--color-secondary-4);
 }
 [card~="secondary:5"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-secondary-5);
   background-color: var(--color-secondary-5);
 }
 [card~="secondary:6"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-secondary-6);
   background-color: var(--color-secondary-6);
 }
 [card~="secondary:7"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-secondary-7);
   background-color: var(--color-secondary-7);
 }
 [card~="secondary:8"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-secondary-8);
   background-color: var(--color-secondary-8);
 }
 [card~="secondary:9"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-secondary-9);
   background-color: var(--color-secondary-9);
 }
 [card~="secondary:10"] {
-  color: var(--color-fixed-light);
+  color: var(--ink-secondary-10);
   background-color: var(--color-secondary-10);
 }
 [card~="dark"] {
@@ -1023,43 +1236,43 @@ a[button=""] {
   background-color: var(--color-dark);
 }
 [card~="dark:1"] {
-  color: var(--color-light);
+  color: var(--ink-dark-1);
   background-color: var(--color-dark-1);
 }
 [card~="dark:2"] {
-  color: var(--color-light);
+  color: var(--ink-dark-2);
   background-color: var(--color-dark-2);
 }
 [card~="dark:3"] {
-  color: var(--color-light);
+  color: var(--ink-dark-3);
   background-color: var(--color-dark-3);
 }
 [card~="dark:4"] {
-  color: var(--color-light);
+  color: var(--ink-dark-4);
   background-color: var(--color-dark-4);
 }
 [card~="dark:5"] {
-  color: var(--color-light);
+  color: var(--ink-dark-5);
   background-color: var(--color-dark-5);
 }
 [card~="dark:6"] {
-  color: var(--color-light);
+  color: var(--ink-dark-6);
   background-color: var(--color-dark-6);
 }
 [card~="dark:7"] {
-  color: var(--color-light);
+  color: var(--ink-dark-7);
   background-color: var(--color-dark-7);
 }
 [card~="dark:8"] {
-  color: var(--color-light);
+  color: var(--ink-dark-8);
   background-color: var(--color-dark-8);
 }
 [card~="dark:9"] {
-  color: var(--color-light);
+  color: var(--ink-dark-9);
   background-color: var(--color-dark-9);
 }
 [card~="dark:10"] {
-  color: var(--color-light);
+  color: var(--ink-dark-10);
   background-color: var(--color-dark-10);
 }
 [card~="light"] {
@@ -1067,43 +1280,43 @@ a[button=""] {
   background-color: var(--color-light);
 }
 [card~="light:1"] {
-  color: var(--color-dark);
+  color: var(--ink-light-1);
   background-color: var(--color-light-1);
 }
 [card~="light:2"] {
-  color: var(--color-dark);
+  color: var(--ink-light-2);
   background-color: var(--color-light-2);
 }
 [card~="light:3"] {
-  color: var(--color-dark);
+  color: var(--ink-light-3);
   background-color: var(--color-light-3);
 }
 [card~="light:4"] {
-  color: var(--color-dark);
+  color: var(--ink-light-4);
   background-color: var(--color-light-4);
 }
 [card~="light:5"] {
-  color: var(--color-dark);
+  color: var(--ink-light-5);
   background-color: var(--color-light-5);
 }
 [card~="light:6"] {
-  color: var(--color-dark);
+  color: var(--ink-light-6);
   background-color: var(--color-light-6);
 }
 [card~="light:7"] {
-  color: var(--color-dark);
+  color: var(--ink-light-7);
   background-color: var(--color-light-7);
 }
 [card~="light:8"] {
-  color: var(--color-dark);
+  color: var(--ink-light-8);
   background-color: var(--color-light-8);
 }
 [card~="light:9"] {
-  color: var(--color-dark);
+  color: var(--ink-light-9);
   background-color: var(--color-light-9);
 }
 [card~="light:10"] {
-  color: var(--color-dark);
+  color: var(--ink-light-10);
   background-color: var(--color-light-10);
 }
 [card~="black"] {
@@ -1111,43 +1324,43 @@ a[button=""] {
   background-color: var(--color-black);
 }
 [card~="black:1"] {
-  color: var(--color-light);
+  color: var(--ink-black-1);
   background-color: var(--color-black-1);
 }
 [card~="black:2"] {
-  color: var(--color-light);
+  color: var(--ink-black-2);
   background-color: var(--color-black-2);
 }
 [card~="black:3"] {
-  color: var(--color-light);
+  color: var(--ink-black-3);
   background-color: var(--color-black-3);
 }
 [card~="black:4"] {
-  color: var(--color-light);
+  color: var(--ink-black-4);
   background-color: var(--color-black-4);
 }
 [card~="black:5"] {
-  color: var(--color-light);
+  color: var(--ink-black-5);
   background-color: var(--color-black-5);
 }
 [card~="black:6"] {
-  color: var(--color-light);
+  color: var(--ink-black-6);
   background-color: var(--color-black-6);
 }
 [card~="black:7"] {
-  color: var(--color-light);
+  color: var(--ink-black-7);
   background-color: var(--color-black-7);
 }
 [card~="black:8"] {
-  color: var(--color-light);
+  color: var(--ink-black-8);
   background-color: var(--color-black-8);
 }
 [card~="black:9"] {
-  color: var(--color-light);
+  color: var(--ink-black-9);
   background-color: var(--color-black-9);
 }
 [card~="black:10"] {
-  color: var(--color-light);
+  color: var(--ink-black-10);
   background-color: var(--color-black-10);
 }
 [card~="white"] {
@@ -1155,43 +1368,43 @@ a[button=""] {
   background-color: var(--color-white);
 }
 [card~="white:1"] {
-  color: var(--color-dark);
+  color: var(--ink-white-1);
   background-color: var(--color-white-1);
 }
 [card~="white:2"] {
-  color: var(--color-dark);
+  color: var(--ink-white-2);
   background-color: var(--color-white-2);
 }
 [card~="white:3"] {
-  color: var(--color-dark);
+  color: var(--ink-white-3);
   background-color: var(--color-white-3);
 }
 [card~="white:4"] {
-  color: var(--color-dark);
+  color: var(--ink-white-4);
   background-color: var(--color-white-4);
 }
 [card~="white:5"] {
-  color: var(--color-dark);
+  color: var(--ink-white-5);
   background-color: var(--color-white-5);
 }
 [card~="white:6"] {
-  color: var(--color-dark);
+  color: var(--ink-white-6);
   background-color: var(--color-white-6);
 }
 [card~="white:7"] {
-  color: var(--color-dark);
+  color: var(--ink-white-7);
   background-color: var(--color-white-7);
 }
 [card~="white:8"] {
-  color: var(--color-dark);
+  color: var(--ink-white-8);
   background-color: var(--color-white-8);
 }
 [card~="white:9"] {
-  color: var(--color-dark);
+  color: var(--ink-white-9);
   background-color: var(--color-white-9);
 }
 [card~="white:10"] {
-  color: var(--color-dark);
+  color: var(--ink-white-10);
   background-color: var(--color-white-10);
 }
 
